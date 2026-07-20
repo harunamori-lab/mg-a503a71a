@@ -1,4 +1,22 @@
-<!doctype html><meta charset="utf-8"><title>はるなの森オフィス</title>
-<body style="font-family:sans-serif;background:#f6efe2;display:flex;align-items:center;justify-content:center;height:100vh;margin:0">
-<p style="color:#6b5a3e">🌲 森へあんないちゅう…</p>
-<script>location.replace(atob("aHR0cHM6Ly9jb3ZlcmFnZS1zb21lb25lLWFtZW5pdGllcy1wZW5ueS50cnljbG91ZGZsYXJlLmNvbS8/az1tb3JpLVZmOXI5aFA1"));</script>
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>はるなの森オフィス</title>
+<body style="font-family:-apple-system,sans-serif;background:#f6efe2;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center">
+<div><div id="m" style="color:#6b5a3e;font-size:15px;line-height:2">🌲 森へあんないちゅう…</div>
+<div id="s" style="color:#b0a085;font-size:11px;margin-top:10px"></div></div>
+<script>
+var T=atob("aHR0cHM6Ly9jb3ZlcmFnZS1zb21lb25lLWFtZW5pdGllcy1wZW5ueS50cnljbG91ZGZsYXJlLmNvbS8/az1tb3JpLVZmOXI5aFA1"), B=T.split("/?")[0], n=0;
+function wait(msg){ document.getElementById("m").innerHTML=msg; }
+function tick(){
+  n++;
+  var c=new AbortController(); var t=setTimeout(function(){c.abort();},8000);
+  fetch(B+"/?gatecheck="+Date.now(),{mode:"no-cors",signal:c.signal}).then(function(){
+    clearTimeout(t); location.replace(T);
+  }).catch(function(){
+    clearTimeout(t);
+    wait("🌙 森はいま準備中です<br>（サーバーのMacがおやすみ中かもしれません）<br><br>この画面を開いたままにすると<br>目が覚めしだい、自動でご案内します");
+    document.getElementById("s").textContent="さいせつぞく "+n+"回目";
+    if(n%4===0){ location.href=location.pathname+"?r="+Date.now(); } // 玄関自体も更新(新トンネルURL取得)
+    else{ setTimeout(tick,15000); }
+  });
+}
+tick();
+</script>
